@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="main.bundle.js"></script>
+</head>
+<body>
+<img id="myImg" src="">
+<input id="myFileUpload" type="file" accept=".jpg, .jpeg, .png">
+<script>
+    document.getElementById('myFileUpload').addEventListener('change', function () {
+        if (this.files && this.files[0]) {
+            let reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('myImg').src = e.target.result;
+                checkPhoto('myImg');
+            }
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+</script>
+</body>
+</html>
